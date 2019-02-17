@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders correctly 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="container"
+  >
+    <div>
+      <h3>
+        City Weather Search
+      </h3>
+      <form
+        onSubmit={[Function]}
+      >
+        <label>
+          Search for City: 
+        </label>
+        <input
+          id="city"
+          name="city"
+          onChange={[Function]}
+        />
+        <button
+          type="submit"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+    <br />
+    <table
+      className="table"
+    >
+      <thead>
+        <tr>
+          <th
+            scope="col"
+          >
+            City
+          </th>
+          <th
+            scope="col"
+          >
+            Temperature
+          </th>
+          <th
+            scope="col"
+          >
+            Weather
+          </th>
+          <th
+            scope="col"
+          >
+            Remove
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
+</div>
+`;
+
+exports[`Searchbar renders correctly 1`] = `
+<div>
+  <h3>
+    City Weather Search
+  </h3>
+  <form>
+    <label>
+      Search for City: 
+    </label>
+    <input
+      id="city"
+      name="city"
+    />
+    <button
+      type="submit"
+    >
+      Search
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Weather renders correctly 1`] = `
+<div
+  className="container"
+>
+  <div>
+    <h3>
+      City Weather Search
+    </h3>
+    <form
+      onSubmit={[Function]}
+    >
+      <label>
+        Search for City: 
+      </label>
+      <input
+        id="city"
+        name="city"
+        onChange={[Function]}
+      />
+      <button
+        type="submit"
+      >
+        Search
+      </button>
+    </form>
+  </div>
+  <br />
+  <table
+    className="table"
+  >
+    <thead>
+      <tr>
+        <th
+          scope="col"
+        >
+          City
+        </th>
+        <th
+          scope="col"
+        >
+          Temperature
+        </th>
+        <th
+          scope="col"
+        >
+          Weather
+        </th>
+        <th
+          scope="col"
+        >
+          Remove
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>
+</div>
+`;

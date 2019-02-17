@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Searchbar from './Searchbar';
-import CityData from './CityData';
 import { isNullOrUndefined } from 'util';
 
 
@@ -37,44 +36,71 @@ class Weather extends Component {
                         isData: isNullOrUndefined,
                     })
                 } else {
-                this.setState({
-                    showcity: this.state.city,
-                    temperature: responseData.main.temp,
-                    weatherDes: responseData.weather[0].description,
-                    icon: "http://openweathermap.org/img/w/" + responseData.weather[0].icon + ".png",
-                    isData: true,
-                    searchData: [...this.state.searchData, {
-                        searchItem: this.state.city,
-                        searchTemp: responseData.main.temp,
-                        searchWD: responseData.weather[0].description
-                    }]
-                });
-            }
-           })
+                    this.setState({
+                        showcity: this.state.city,
+                        temperature: responseData.main.temp,
+                        weatherDes: responseData.weather[0].description,
+                        icon: "http://openweathermap.org/img/w/" + responseData.weather[0].icon + ".png",
+                        isData: true,
+                    });
+                }
+            })
+    }
+
+    addCity() {
+        const addSearchedCity = {
+            showcity: this.state.city,
+            temperature: this.state.temperature,
+            weatherDes: this.state.weatherDes
+        }
+        this.setState({
+            searchData: [
+                ...this.state.searchData, addSearchedCity
+            ]
+        })
     }
 
     renderIsData() {
         if (this.state.isData === true)
             return (
                 <div>
-                <h4> Weather of {this.state.showcity}</h4>
-                <div>Temperature: {this.state.temperature} Celsius</div>
-                <div>Weather: {this.state.weatherDes}</div>
-                <div><img src={this.state.icon} alt="icon" /></div>
-                <br />
+                    <h4> Weather of {this.state.showcity}</h4>
+                    <div>Temperature: {this.state.temperature} Celsius</div>
+                    <div>Weather: {this.state.weatherDes}</div>
+                    <div><img src={this.state.icon} alt="icon" /></div>
+                    <label>Click to save:</label>
+                    <button type="submit" onClick={() => this.addCity()}>Save</button>
+                    <br />
                 </div >
             );
     }
 
     renderError() {
         if (this.state.isData === isNullOrUndefined)
+            return (
+                <div>
+                    <h6>City not found!</h6>
+                    <br />
+                </div>
+            );
+    }
+
+    renderCityData() {
         return (
-            <div>
-            <h6>City not found!</h6>
-            <br />
-            </div>
+            <tbody>
+                {this.state.searchData.map((data, index) => {
+                    return (
+                        <tr key={index}>
+                            <td>{data.showcity}</td>
+                            <td>{data.temperature}</td>
+                            <td>{data.weatherDes}</td>
+                            <td><button onClick={() => this.removeCity(index)}>Remove</button></td>
+                        </tr>)
+                })}
+            </tbody>
         );
     }
+
 
     removeCity(index) {
         const searchData = [...this.state.searchData];
@@ -105,9 +131,7 @@ class Weather extends Component {
                             <th scope="col">Remove</th>
                         </tr>
                     </thead>
-                    <CityData
-                        searchData={this.state.searchData}
-                        removeCity={this.removeCity.bind(this)} />
+                    {this.renderCityData()}
                 </table>
 
 
