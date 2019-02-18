@@ -1,6 +1,6 @@
 # Weather App
 
-Simple React app which shows current weather data (using [OpenWeatherMap.org](https://openweathermap.org/) for searched city. The user can search, save and remove searched city. 
+Simple React app which shows current weather data using [OpenWeatherMap.org](https://openweathermap.org/) for searched city. The user can search, save and remove searched city. 
 
 ## Functionalities
 
